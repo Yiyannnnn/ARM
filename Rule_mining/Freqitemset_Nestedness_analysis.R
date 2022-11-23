@@ -78,9 +78,3 @@ rulelist_H <- rules(
 inspect(head(rulelist_H, n = 10, by = "lift"))
 
 
-
-library(visNetwork)
-source("rule_viz.R")
-inspect(head(rulelist_H,n = 5, by = "lift"))
-present_proportion <-  apply(OTU_H,1,function(i) length(which(i != 0))/length(i))
-graph_visNetwork(head(rulelist_H,n = 20, by = "lift"))
