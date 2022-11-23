@@ -64,33 +64,3 @@ mean(auc_RF)
 mean(auprc_RF)
 
 performace_list_CRC_RF_RA <- list("CRC_Acc_RF_20" = accuracy_RF,"CRC_F1_RF_20" = F1_RF,"CRC_AUC_RF_20" = auc_RF,"CRC_AUPRC_RF_20" = auprc_RF)
-
-fwrite(performace_list_CRC_RF_RA,"performace_list_CRC_RF_RA.txt")
-
-accuracy_RF_b <- c()
-F1_RF_b <- c()
-auc_RF_b <- c()
-
-for (j in 1:10){
-  test_classification_b <- test_classification[c(which(test_classification$class == "CRC"),sample(1:nrow(H),nrow(CRC))),]
-  random_split <- sample(1:nrow(test_classification_b),0.5*nrow(test_classification_b))
-  train <- test_classification_b[random_split,]
-  test <- test_classification_b[-random_split,]
-  classifier_RF = randomForest(x = train[,-201],
-                               y = train$class,
-                               ntree = 100)
-  y_pred = predict(classifier_RF, newdata = test[-201])
-  
-  eval_RF_b <- confusionMatrix(as.factor(as.numeric(y_pred)), as.factor(as.numeric(test[,201])), 
-                             mode = "everything", positive="1")
-  accuracy_RF_b <- c(accuracy_RF_b,eval_RF_b$overall["Accuracy"])
-  F1_RF_b <- c(F1_RF_b,eval_RF_b$byClass["F1"])
-  roc_RF_b <- roc(as.numeric(test[,201]),
-                as.numeric(y_pred),levels = c("2","1"),direction = ">")
-  auc_RF_b <- c(auc_RF_b,roc_RF$auc)
-}
-
-
-mean(accuracy_RF_b)
-mean(F1_RF_b)
-mean(auc_RF_b)
