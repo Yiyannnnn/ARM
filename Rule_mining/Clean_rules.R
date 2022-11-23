@@ -26,3 +26,11 @@ dim(univ_rule_py_H)
 
 #fwrite(univ_rule_py_H,"univ_rule_H_supp0.7_uncleaned.csv")
 
+               
+
+
+library(visNetwork)
+source("rule_viz.R")
+inspect(head(rulelist_H,n = 5, by = "lift"))
+present_proportion <-  apply(OTU_H,1,function(i) length(which(i != 0))/length(i))
+graph_visNetwork(head(rulelist_H,n = 20, by = "lift"))
