@@ -88,7 +88,7 @@ for (i in 1:10){
                   data = as.data.frame(train[,-c(which(coef.min == 0)-1)]))
   
   probabilities = logmodel %>% predict(as.data.frame(test), type = "response")
-  y_pred = as.factor(ifelse(probabilities < 0.9, "D", "H"))
+  y_pred = as.factor(ifelse(probabilities < 0.5, "D", "H"))
   #y_pred <- stats :: predict(logmodel,as.data.frame(test[,-201]))
   
   
