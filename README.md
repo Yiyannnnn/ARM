@@ -15,3 +15,22 @@ In the rule mining part of this project, we obtain the relative abundance table 
 4. In Freqitemset_Nestedness_analysis.R, we analyzed nestedness of the frequent item sets using based on the classical NODF measure and plot them for comparison. The inputs are the universal rule sets from step 3, and the outputs are NODF values and the plots shown in Figure 3.
 
 5. In Rule_Comparison.R, we compare the universal rules between healthy and disease samples. The inputs are also the universal rule sets from step 3. We also generated plots shown in Figure 4.
+
+
+In the classification part, there are four each classification model : 
+
+1. Logit - logistic regression with LASSO
+2. RF - Random Forest
+3. SVM - Support Vector Machine
+4. XGB - eXtreme Gradient Boosting decision trees 
+
+And for each method, we tried two kinds of input to perform the classification:
+
+1. RA - input as relative abundance table
+2. CPAR - input as selected features from relative abundance table using predictive rules
+
+Each R script is corresponding to the methods and input types.
+
+Also, in functions_CPAR_classification.R includes the necessary function for *CPAR.R files to perform feature selection.
+
+Finally, the performance was plotted using Performance_Plot.R. The input has the format as in /ARM?Interim/performace_list_final.RData, and the output is shown as in Figure 5b.
