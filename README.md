@@ -34,3 +34,6 @@ Each R script is corresponding to the methods and input types.
 Also, in functions_CPAR_classification.R includes the necessary function for *CPAR.R files to perform feature selection.
 
 Finally, the performance was plotted using Performance_Plot.R. The input has the format as in /ARM?Interim/performace_list_final.RData, and the output is shown as in Figure 5b.
+
+
+![alt text](https://github.com/Yiyannnnn/ARM/blob/0a03f81de4dd137acf607f5cc66e726810f88e05/Fig1_ARMworkflow.pdf)
